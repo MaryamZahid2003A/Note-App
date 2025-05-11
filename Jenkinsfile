@@ -5,12 +5,12 @@ pipeline {
         FRONTEND_PORT = '5001'  // Port for frontend on Jenkins deployment
         BACKEND_PORT  = '5000'
         COMPOSE_FILE = 'docker-compose.yml'  // Location of your compose file
-        PROJECT_NAME = 'frontendProject'  // Project name for the Docker Compose deployment
+        PROJECT_NAME = 'frontendproject'  // Project name for the Docker Compose deployment
     }
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/AmnaKhan2003/Note-App'  // Replace with your GitHub repo URL
+                git branch: 'main', url: 'https://github.com/AmnaKhan2003/Note-App'
             }
         }
         
@@ -28,7 +28,10 @@ pipeline {
                 script {
                     // Deploy the frontend with the specified port for Jenkins
                     sh """
+                    docker-compose -p ${PROJECT_NAME} -f ${COMPOSE_FILE} down
+                    
                     FRONTEND_PORT=${FRONTEND_PORT} \
+                    BACKEND_PORT=${BACKEND_PORT} \
                     docker-compose -p ${PROJECT_NAME} -f ${COMPOSE_FILE} up -d
                     """
                 }
