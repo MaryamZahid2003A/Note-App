@@ -20,10 +20,10 @@ services:
       - "${FRONTEND_PORT}:80"
     environment:
       - API_URL=http://54.234.164.178:5000
-volumes:
+    volumes:
       - ./frontend:/usr/share/nginx/html
 
-mongo:
+  mongo:
     container_name: noteapp-mongo-build
     image: mongo:6
     ports:
