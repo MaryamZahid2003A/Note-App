@@ -23,7 +23,7 @@ const Login = () => {
             }
         }
         catch(error){
-                    const errorMessage = error.response?.data?.message || "An error occurred during login. Please try again.";
+                    const errorMessage = error.response?.data?.message || "An error occurred during login. Please try again later.";
                     toast.error(errorMessage);
                 }
     }
