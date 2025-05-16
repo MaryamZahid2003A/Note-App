@@ -137,8 +137,10 @@ function Home() {
         </div>
       <button 
       onClick={()=>setModalOpen(true)}
-      className='fixed right-4 bottom-4 text-2xl bg-teal-500 text-white font-bold p-4 rounded-full'>+</button>
-
+      className='fixed right-4 bottom-4 text-2xl bg-teal-500 text-white font-bold p-4 rounded-full'>+
+      </button>
+          {/* changes by maryam */}
+          <p>changes</p>
       {isModalOpen && <NoteModal closeModel={closeModel} addNote={addNote} currentNote={currentNote} editNote={editNote}></NoteModal>}
     </div>
 
